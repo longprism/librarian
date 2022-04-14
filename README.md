@@ -1,4 +1,6 @@
 # Librarian
 
-Simple CRUD Library Web App.
+Simple CRUD Library Web App. 
+
+powered by Laravel & Blade
 
