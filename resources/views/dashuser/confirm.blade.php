@@ -9,9 +9,9 @@
       <!-- box-body -->
       <div class="box-body">
         @if(($borrow->count()) > 0)
-        <form role="form" method="post" action="{{ url('/toinvoice') }}">
+        <form role="form" method="post" action="{{ url('/toinvoice/1') }}">
           {{ csrf_field() }}
-          <table class="table table-bordered table-hover">
+          <table class="table table-bordered table-hover printable">
             <thead>
             <tr>
               <th width="9.5%">ID User</th>
@@ -40,8 +40,8 @@
             </thead>
             <tbody>
           </table>
-          <button type="submit" class="btn btn-success btn-flat pull-left">
-            <span>Confirm</span>
+          <button onclick="window.print();" class="btn btn-success btn-flat pull-left">
+            <span>Confirm & Print</span>
           </button>
           <a href="{{ url('/confirm/diefull/1') }}">
             <button style="margin-left:10px;" type="button" class="btn btn-danger btn-flat pull-left">
@@ -70,7 +70,7 @@
           <img class="img-circle" src="{{asset('bower_components/admin-lte/dist/img/user.png')}}" alt="User Avatar">
         </div>
         <!-- /.widget-user-image -->
-        <h3 class="widget-user-username">John Doe</h3>
+        <h3 class="widget-user-username">ensiana</h3>
         <h5 class="widget-user-desc">User</h5>
       </div>
       <div class="box-footer no-padding">

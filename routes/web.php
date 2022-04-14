@@ -13,7 +13,9 @@
 
   // user session
 
-  Route::get('/home', 'HomeController@showItem');
+  Route::redirect('/', '/home');
+  
+  Route::get('/home', 'HomeController@showItem')->name('home');
 
   Route::get('/confirm', 'BorrowController@indexConfirm');
 
@@ -23,11 +25,7 @@
 
   Route::get('/confirm/die/{id}', 'BorrowController@dieConfirm');
 
-  Route::get('/invoice', 'InvoiceController@indexVoice');
-
-  Route::post('/toinvoice', 'InvoiceController@storeVoice');
-
-  Route::get('/invoice-print', 'InvoiceController@printVoice');
+  Route::post('/toinvoice/{id}', 'InvoiceController@storeVoice');
 
   // admin session
 
@@ -47,9 +45,11 @@
 
   Route::get('/member/die/{id}', 'TestController@dieMember');
 
+  Route::get('/borrow', 'InvoiceController@indexVoice');
+
 // login session
 
-  Route::get('/logon', 'LawController@index');
+  Route::get('/logon', 'LawController@index')->name('login');
 
   Route::post('/getlogin', 'LawController@getLogin');
 
@@ -59,7 +59,7 @@
 
   Route::get('/logout', function (){
     Auth::logout();
-    return view('logon.login');
+    return redirect('/logon');
   });
 
-  Auth::routes();
+  

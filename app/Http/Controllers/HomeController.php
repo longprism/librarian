@@ -12,12 +12,20 @@ use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    public function showItem()
+    public function __construct()
+    {
+    }
+      public function showItem()
     {
       $countconfirm = DB::table('confirm_session')->count();
-      $user = Auth::user();
       $id = Auth::id();
+      $user = Auth::user();
       $itemdata = DB::table('db_buku')->get();
-      return view('dashuser.userco', ['item'=>$itemdata, $user, $id, 'countconfirm'=>$countconfirm]);
+      return view('dashuser.userco', [
+        'item'=>$itemdata, 
+        'user'=>$user, 
+        'id'=>$id, 
+        'countconfirm'=>$countconfirm
+      ]);
     }
 }

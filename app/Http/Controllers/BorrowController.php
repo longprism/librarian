@@ -7,18 +7,26 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BorrowController extends Controller
 {
   public function indexConfirm()
   {
+    $id = Auth::id();
+    $user = Auth::user();
     $countconfirm = DB::table('confirm_session')->count();
     $confirmin = DB::table('confirm_session')
     ->join('users', 'confirm_session.ids', '=', 'users.ids')
     ->join('db_buku', 'confirm_session.idb', '=', 'db_buku.idb')
     ->select('users.*', 'db_buku.*', 'confirm_session.*')
     ->get();
-    return view('dashuser.confirm',['borrow' => $confirmin, 'countconfirm'=>$countconfirm]);
+    return view('dashuser.confirm', [
+      'borrow' => $confirmin, 
+      'user'=>$user, 
+      'id'=>$id, 
+      'countconfirm'=>$countconfirm
+    ]);
   }
   public function storeConfirm(Request $request)
   {

@@ -32,7 +32,8 @@
       <li class="header">HEADER</li>
       <!-- Optionally, you can add icons to the links -->
       <li><a href="{{url('/member')}}"><i class="fa fa-table"></i><span>Members</span></a></li>
-      <li><a href="{{url('/bookco')}}"><i class="fa fa-book"></i><span>Book list</span></li>
+      <li><a href="{{url('/bookco')}}"><i class="fa fa-book"></i><span>Book list</span></a></li>
+      <li><a href="{{url('/borrow')}}"><i class="fa fa-calendar-check-o"></i><span>Borrowing list</span></a></li>
     </ul>
     <!-- /.sidebar-menu -->
   </section>
